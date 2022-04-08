@@ -39,7 +39,7 @@ router.get('/movies/:name', async (req, res) => {
   res.send(found);
 });
 //listado por genero
-router.get('/movies/:genre', async (req, res) => {
+router.get('/movies/genre/:genre', async (req, res) => {
   const { genre } = req.params;
 
  
