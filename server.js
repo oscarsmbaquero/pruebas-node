@@ -1,6 +1,8 @@
 import express from 'express';
-// import bodyParser  from 'body-parser f';
+import bodyParser from "body-parser";
+// import cors from "cors";
 import './db.js';
+
 
 import { Movie } from './models/Movie.js';
 
@@ -9,6 +11,10 @@ const PORT = 3000;
 const server = express();
 
 const router = express.Router();
+router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.json());
+// router.use(cors());
+// router.use(express.json());
 
 router.get('/', (req, res) => {
   res.send('Api de peliculas de Oscar!');
@@ -50,6 +56,60 @@ router.get('/movies/genre/:genre', async (req, res) => {
   res.send(found);
 });
 
+router.get('/form', async (req, res) =>{
+
+  res.send(`<html><body>
+  <p>Añadir Pelicula</p>
+  <form action="/add" method="POST">
+  Ingrese id:
+  <input id="id" type="number" name="id" size="10"><br>
+  Ingrese nombre:
+  <input id="name" type="text" name="name" size="10"><br>
+  Ingrese genero:
+  <input id="genre" type="text" name="genre" size="10"><br>
+  <input type="submit" value="Sent">
+</form>
+</body></html>`)
+});
+
+router.post('/add',(req, res) =>{
+
+
+  let movie = new Movie();
+  movie.id = req.body.id;
+  movie.name = req.body.name;
+  movie.genre = req.body.genre;
+
+  console.log(movie);
+  movie.save((err, movieStored) =>{
+
+          if (err) res.status(500).send({message:`Error al guardar el reistro ${movie.name} `})
+    
+          res.status(200).send({movie: movieStored});
+    
+        })
+
+
+});
+
+// router.post('/add/movies', (req, res) =>{
+
+//    let movie = new Movie();
+//      movie.id = req.body.id;
+//      movie.name = req.body.name;     
+//      movie.genre = req.body.genre;
+//     //  movie.id = 13;
+//     //  movie.name = "La bala que doblo la esquina";     
+//     //  movie.genre = "comedy";
+
+//     movie.save((err, movieStored) =>{
+
+//       if (err) res.status(500).send({message:`Error al guardar el reistro ${movie.name} `})
+
+//       res.status(200).send({movie: movieStored});
+
+//     })
+//   });
 
 
 // Creación
