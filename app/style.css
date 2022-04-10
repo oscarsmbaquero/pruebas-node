@@ -1,0 +1,22 @@
+
+.body{
+
+    background-color: grey;
+    flex:display;
+}
+
+
+.form{
+
+    display:flex;
+    flex-direction: column;
+    width : 10rem;
+    height: 8rem;
+    justify-content: center;
+    margin: 10rem 10rem 10rem 30rem;
+}
+
+.input{
+
+background-color: green;
+}
