@@ -7,57 +7,41 @@ import { Movie } from '../models/Movie.js';
 
 const movie = [
     {
-    
-        "id": 1,
-        "name": "La histotria interminable",
-        "genre": "fantasy"
+        title: 'The Matrix',
+        director: 'Hermanas Wachowski',
+        year: 1999,
+        genre: 'Acción',
       },
       {
-        
-        "id": 2,
-        "name": "Dias de Futbol",
-        "genre": "comedy"
+        title: 'The Matrix Reloaded',
+        director: 'Hermanas Wachowski',
+        year: 2003,
+        genre: 'Acción',
       },
       {
-        
-        "id": 4,
-        "name": "En el nombre del padre",
-        "genre": "drama"
+        title: 'Buscando a Nemo',
+        director: 'Andrew Stanton',
+        year: 2003,
+        genre: 'Animación',
       },
       {
-        
-        "id": 5,
-        "name": "El expresso de media noche",
-        "genre": "drama"
+        title: 'Buscando a Dory',
+        director: 'Andrew Stanton',
+        year: 2016,
+        genre: 'Animación',
       },
       {
-        
-        "id": 3,
-        "name": "Airbag",
-        "genre": "comedy"
+        title: 'Interestelar',
+        director: 'Christopher Nolan',
+        year: 2014,
+        genre: 'Ciencia ficción',
       },
       {
-        
-        "id": 98,
-        "name": "Blow",
-        "genre": "drama"
-        
+        title: '50 primeras citas',
+        director: 'Peter Segal',
+        year: 2004,
+        genre: 'Comedia romántica',
       },
-      
-      {
-        
-        "id": 1024,
-        "name": "Primos",
-        "genre": "comedy"
-        
-      },
-      {
-        
-        "id": 1025,
-        "name": "Primossss",
-        "genre": "comedy"
-        
-      }, 
 ];
 
 const movieDocuments = movie.map(movie => new Movie(movie));
