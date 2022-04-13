@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+//prueba
 const Schema = mongoose.Schema;
 
 const movieSchema = new Schema(
