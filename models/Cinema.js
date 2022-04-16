@@ -8,7 +8,7 @@ const cinemaSchema = new Schema(
     name: { type: String, required: true },
     location: { type: String, required: true },
     //ref al modelo Movies
-    movies: [{ type: mongoose.Types.ObjectId, ref: 'Movies' }],
+    //movies: [{ type: mongoose.Types.ObjectId, ref: 'Movie' }],
   },
   {
     timestamps: true,

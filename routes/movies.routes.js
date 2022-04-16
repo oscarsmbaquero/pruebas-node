@@ -84,63 +84,50 @@ router.get('/', async (req, res) => {
    
   });
 
-  // router.post('/', async (req, res, next) => {
-  //   try {
-      
-  //     const newMovie = new Movie({
-  //       title: req.body.title,
-  //       director: req.body.director,
-  //       year: req.body.year,
-  //       genre: req.body.genre
-  //     });
+  router.post('/', async (req, res, next) => {
+    try {
+      // Crearemos una instancia de character con los datos enviados
+      const newMovie = new Movie({
+        // title: "prueba manual",
+        // director: "prueba manual",
+        // year: 1999,
+        // genre: "prueba manual"
+        title: req.body.title,
+        director: req.body.director,
+        year: req.body.year,
+        genre: req.body.genre
+      });
   
-      
-  //     const createdMovie = await newMovie.save();
-  //     return res.status(201).json(createdMovie);
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  // });
-router.post('/',(req, res) =>{
-  //console.log(req.body.title);
-let movie = new Movie();
-title = req.body.title;
-director = req.body.director;
-year = req.body.year;
-genre = req.body.genre;
-console.log(movie);
-movie.save((err) =>{
+      // Guardamos el personaje en la DB
+      const createdMovie = await newMovie.save();
+      return res.status(201).json(createdMovie);
+    } catch (error) {
+      next(error);
+    }
+  });
 
-        if (err) res.status(500).send(
-          {message:`Error al guardar el reistro ${movie.title} `})
-  
-        res.status(200).send(`Añadido correctamente ${movie.title}`);
-  
-      })
- });
-
-  
+ 
   
   
   /// monta el form ///////////////////////////////////////////////////no eliminar
   
   
-  router.get('/form/form', async (req, res) =>{
-   console.log('Entro');
-    res.send(`<html><body>
-    <form class ="form" action="/movies/add" method="POST" class="form">
-          Ingrese Título:
-          <input class ="imput" id="title" type="text" name="title" size="10"><br>
-          Ingrese Director:
-          <input class ="imput" id="director" type="text" name="director" size="10"><br>
-          Ingrese Año:
-          <input id="year" type="number" name="year" size="10"><br>
-          Ingrese genero:
-          <input id="genre" type="text" name="genre" size="10"><br>
-          <input type="submit" value="Enviar">
-    </form>
-  </body></html>`)
-  });
+  // router.get('/form/form', async (req, res) =>{
+  //  console.log('Entro');
+  //   res.send(`<html><body>
+  //   <form class ="form" action="/movies/add" method="POST" class="form">
+  //         Ingrese Título:
+  //         <input class ="imput" id="title" type="text" name="title" size="10"><br>
+  //         Ingrese Director:
+  //         <input class ="imput" id="director" type="text" name="director" size="10"><br>
+  //         Ingrese Año:
+  //         <input id="year" type="number" name="year" size="10"><br>
+  //         Ingrese genero:
+  //         <input id="genre" type="text" name="genre" size="10"><br>
+  //         <input type="submit" value="Enviar">
+  //   </form>
+  // </body></html>`)
+  // });
   
   // router.post('/',(req, res) =>{
   //     //console.log(req.body.title);

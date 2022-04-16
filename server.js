@@ -1,7 +1,7 @@
 //acabado parte I
 import express from 'express';
-
-import './db.js';
+// import bodyParser from "body-parser";
+import { connection } from './db.js';
 
 import { cinemaRoutes } from './routes/cinema.routes.js';
 import { moviesRoutes } from './routes/movies.routes.js';
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 });
 // Middlewares
 router.use(express.json());
-router.use(express.urlencoded({extended: true}));
+router.use(express.urlencoded({extended: false}));
 
 
 

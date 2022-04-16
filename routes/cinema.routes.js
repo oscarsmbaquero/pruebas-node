@@ -73,7 +73,7 @@ router.get('/', async (req, res) => {
         const newCinema = new Cinema({
             name: req.body.name,
             location: req.body.loot,
-            characters: []
+            //  movies: []
         });
         const createdCinema = await newCinema.save();
         return res.status(201).json(createdCinema);
@@ -82,13 +82,13 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.put('/add-cinema', async (req, res, next) => {
+router.put('/edit-movie', async (req, res, next) => {
     try {
+        const { _id } = req.body;
         const { name } = req.body;
-        const { location } = req.body;
         const updatedCinema = await Cinema.findByIdAndUpdate(
-            name,
-            { $push: { movie: location } },
+          _id,
+            { $push: { movie: name } },
             { new: true }
         );
         return res.status(200).json(updatedCinema);

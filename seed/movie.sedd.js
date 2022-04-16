@@ -69,5 +69,7 @@ mongoose
 		await Movie.insertMany(movieDocuments);
 	})
   .catch((err) => console.log(`Error creating data: ${err}`))
-	// Por último nos desconectaremos de la DB.
-  .finally(() => mongoose.disconnect());
+  .finally(() => {
+    mongoose.disconnect();
+    console.log('OK!');
+  });
